@@ -1,24 +1,12 @@
 # This program will open source codes and will save them in PDF files
 
 # Import libraries
-import os.path 
-from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
+import pyconv
 
-def createFiles(filename, destiny):
-    path, name = os.path.split(filename)
-    with open(filename, "r") as f:
-        c = canvas.Canvas(destiny + name + ".pdf", pagesize=letter)
-        c.drawString(30,750,"Program.cs")
-        pos_x = 30
-        pos_y = 720
-        for line in f.readlines():
-            new_line = line.replace('\n',' ').replace('\t', '    ').replace('\ufeff','')
-            c.drawString(pos_x, pos_y, new_line)
-            pos_y = pos_y - 15
-        c.save()
-
-
+# Start application
 if __name__ == "__main__":
-    createFiles('tests/Program.cs', 'files/')
+    folder = '/home/murillo/anaconda3/git/ConvPDF/tests'
+    destiny = '/home/murillo/anaconda3/git/ConvPDF/files'
+    c = pyconv.ConvPdf()
+    c.convert(folder, destiny)
     
