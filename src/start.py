@@ -15,6 +15,7 @@ if __name__ == "__main__":
         # Show the checked folders and converted files
         print (c.checkedFolders)
         print (c.convertedFiles)
+        print (c.notConvertedFiles)
     else:
         print ("You need set the folder to convert source files in PDF files")
     

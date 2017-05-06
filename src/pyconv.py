@@ -7,6 +7,7 @@ class ConvPdf(object):
     # Constructor    
     def __init__(self, destiny):
         self.__convertedFiles = []
+        self.__notConvertedFiles = []
         self.__checkedFolders = []
         self.__destiny = destiny
     
@@ -39,7 +40,7 @@ class ConvPdf(object):
                 c.save()
                 self.__convertedFiles.append(filename)
         except:
-            raise ValueError("Invalid file for conversion")
+            self.__notConvertedFiles.append(filename)
 
     # Properties
     def setDestiny(self, destiny):
@@ -60,6 +61,13 @@ class ConvPdf(object):
     def getCheckedFolders(self):
         return self.__checkedFolders
 
+    def setNotConvertedFiles(self, notConvertedFiles):
+        self.__notConvertedFiles = notConvertedFiles
+
+    def getNotConvertedFiles(self):
+        return self.__notConvertedFiles
+
     destiny = property(getDestiny, setDestiny)
     convertedFiles = property(getConvertedFiles, setConvertedFiles)
     checkedFolders = property(getCheckedFolders, setCheckedFolders)
+    notConvertedFiles = property(getNotConvertedFiles, setNotConvertedFiles)
