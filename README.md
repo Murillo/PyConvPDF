@@ -17,6 +17,10 @@ c.convert(folder)
 ```
 print (c.convertedFiles)
 ```
+### View files not converted:
+```
+print (c.notConvertedFiles)
+```
 ### View checked folders:
 ```
 print (c.checkedFolders)
