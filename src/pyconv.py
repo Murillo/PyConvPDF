@@ -7,21 +7,31 @@ class ConvPdf(object):
     # Constructor    
     def __init__(self, destiny):
         self.__convertedFiles = []
+        self.__ignoredFiles = []
         self.__notConvertedFiles = []
         self.__checkedFolders = []
         self.__destiny = destiny
     
     # Methods
     def convert(self, folder=None, ignoreFiles=None):
+        """
+        Converts all files that are in the specified folder in the first parameter
+        """
         for f in os.listdir(folder):
             if os.path.isfile(os.path.join(folder, f)):
                 filename = "{}/{}".format(folder, f)
-                self.createFile(filename)
+                if os.path.splitext(filename)[1][1:] not in ignoreFiles:
+                    self.createFile(filename)
+                else:
+                    self.__ignoredFiles.append(filename)
             else:
                 self.__checkedFolders.append("{}/{}".format(folder, f))
                 self.convert("{}/{}".format(folder, f))
 
     def createFile(self, filename=None):
+        """
+        Converts to PDF only the file entered in the parameter
+        """
         try:
             path, name = os.path.split(filename)
             with open(filename, "r") as f:
@@ -67,7 +77,14 @@ class ConvPdf(object):
     def getNotConvertedFiles(self):
         return self.__notConvertedFiles
 
+    def setIgnoredFiles(self, ignoredFiles):
+        self.__ignoredFiles = ignoredFiles
+
+    def getIgnoredFiles(self):
+        return self.__ignoredFiles
+
     destiny = property(getDestiny, setDestiny)
     convertedFiles = property(getConvertedFiles, setConvertedFiles)
     checkedFolders = property(getCheckedFolders, setCheckedFolders)
     notConvertedFiles = property(getNotConvertedFiles, setNotConvertedFiles)
+    ignoredFiles = property(getIgnoredFiles, setIgnoredFiles)
