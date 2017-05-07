@@ -11,11 +11,11 @@ import pyconv
 folder = 'home/user/projectfolder'
 destiny = 'home/user/filesconverted'
 c = pyconv.ConvPdf(destiny)
-c.convert(folder)
+c.convert(folder, [])
 ```
 It's possible set the extensions files that the converter will ignore in process. This is second parameter of convert method as array format.
 ```
-c.convert(folder, ['xml','json'])
+c.convert(folder, ['xml','cs', 'java'])
 ```
 ### View files converted:
 ```

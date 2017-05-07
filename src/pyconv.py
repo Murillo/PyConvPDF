@@ -13,7 +13,7 @@ class ConvPdf(object):
         self.__destiny = destiny
     
     # Methods
-    def convert(self, folder=None, ignoreFiles=None):
+    def convert(self, folder, ignoreFiles):
         """
         Converts all files that are in the specified folder in the first parameter
         """
@@ -26,7 +26,7 @@ class ConvPdf(object):
                     self.__ignoredFiles.append(filename)
             else:
                 self.__checkedFolders.append("{}/{}".format(folder, f))
-                self.convert("{}/{}".format(folder, f))
+                self.convert("{}/{}".format(folder, f), ignoreFiles)
 
     def createFile(self, filename=None):
         """
@@ -71,10 +71,10 @@ class ConvPdf(object):
     def getCheckedFolders(self):
         return self.__checkedFolders
 
-    def setNotConvertedFiles(self, notConvertedFiles):
+    def setUnconvertedFiles(self, notConvertedFiles):
         self.__notConvertedFiles = notConvertedFiles
 
-    def getNotConvertedFiles(self):
+    def getUnconvertedFiles(self):
         return self.__notConvertedFiles
 
     def setIgnoredFiles(self, ignoredFiles):
@@ -86,5 +86,5 @@ class ConvPdf(object):
     destiny = property(getDestiny, setDestiny)
     convertedFiles = property(getConvertedFiles, setConvertedFiles)
     checkedFolders = property(getCheckedFolders, setCheckedFolders)
-    notConvertedFiles = property(getNotConvertedFiles, setNotConvertedFiles)
+    unconvertedFiles = property(getUnconvertedFiles, setUnconvertedFiles)
     ignoredFiles = property(getIgnoredFiles, setIgnoredFiles)

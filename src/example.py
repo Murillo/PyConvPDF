@@ -11,12 +11,19 @@ if __name__ == "__main__":
         folder = sys.argv[1]
         destiny = sys.argv[2]
         c = pyconv.ConvPdf(destiny)
-        c.convert(folder, ['xml','json'])
+        c.convert(folder,['cs'])
 
         # Show the checked folders and converted files
+        print ("Checked Folders: ")
         print (c.checkedFolders)
+
+        print ("Converted files: ")
         print (c.convertedFiles)
-        print (c.notConvertedFiles)
+
+        print ("Unconverted files: ")
+        print (c.unconvertedFiles)
+
+        print ("Igonred files: ")
         print (c.ignoredFiles)
     else:
         print ("You need set the folder to convert source files in PDF files")
