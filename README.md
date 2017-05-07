@@ -13,6 +13,10 @@ destiny = 'home/user/filesconverted'
 c = pyconv.ConvPdf(destiny)
 c.convert(folder)
 ```
+It's possible set the extensions files that the converter will ignore in process. This is second parameter of convert method as array format.
+```
+c.convert(folder, ['xml','json'])
+```
 ### View files converted:
 ```
 print (c.convertedFiles)
@@ -20,6 +24,10 @@ print (c.convertedFiles)
 ### View files not converted:
 ```
 print (c.notConvertedFiles)
+```
+### View ignored files:
+```
+print (c.ignoredFiles)
 ```
 ### View checked folders:
 ```
