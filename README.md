@@ -23,7 +23,7 @@ print (c.convertedFiles)
 ```
 ### View files not converted:
 ```
-print (c.notConvertedFiles)
+print (c.unconvertedFiles)
 ```
 ### View ignored files:
 ```
