@@ -11,7 +11,7 @@ if __name__ == "__main__":
         folder = sys.argv[1]
         destiny = sys.argv[2]
         c = pyconv.ConvPdf(destiny)
-        c.convert(folder,['cs'])
+        c.convert(folder,[])
 
         # Show the checked folders and converted files
         print ("Checked Folders: ")
