@@ -14,10 +14,11 @@ class ConvPdf(object):
         self.__destiny = destiny
 
     # Methods
-    def convert(self, folder, ignoreFiles):
+    def convert(self, folder, ignoreFiles=[]):
         """
         Converts all files that are in the specified folder in the first parameter
         """
+        self.__cleanLists()
         for f in os.listdir(folder):
             if os.path.isfile(os.path.join(folder, f)):
                 filename = "{}/{}".format(folder, f)
@@ -41,6 +42,12 @@ class ConvPdf(object):
                 self.__convertedFiles.append(filename)
         except:
             self.__notConvertedFiles.append(filename)
+
+    def __cleanLists(self):
+        self.__convertedFiles = []
+        self.__ignoredFiles = []
+        self.__notConvertedFiles = []
+        self.__checkedFolders = []
 
     def __breakLines(self, file):
         limit_line = 95
